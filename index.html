@@ -23,6 +23,7 @@
             font-size: 3.5em;
             color: #fff;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transition: opacity 1s ease-in-out;
         }
         #countdown {
             font-size: 2em;
@@ -75,14 +76,14 @@
 <body>
     <canvas class="confetti"></canvas>
     <div class="container">
-        <h1>Countdown for Birthday🎉</h1>
+        <h1 id="main-title">Countdown for Birthday🎉</h1>
         <h2 id="countdown"></h2>
         <div class="gallery">
             <img src="pic1.png" alt="Photo 1">
-            <img src="pic2.png" alt="Photo 2">
-            <img src="pic3.jpg" alt="Photo 3">
-            <img src="pic4.jpg" alt="Photo 4">
-            <img src="pic5.jpg" alt="Photo 5">
+            <img src="gadgets.jpeg" alt="Photo 2">
+            <img src="gadgets.jpeg" alt="Photo 3">
+            <img src="green.jpeg" alt="Photo 4">
+            <img src="health.jpeg" alt="Photo 5">
         </div>
     </div>
     <script>
@@ -92,10 +93,13 @@
             const diff = targetTime - now;
             
             if (diff <= 0) {
-                document.getElementById("countdown").innerHTML = "🎉 Happie Birthday Bhaiya! 🎉";
+                document.getElementById("countdown").innerHTML = "🎉 Happie Birthday! 🎉";
                 setTimeout(() => {
-                    document.getElementById("countdown").style.display = "none";
+                    document.getElementById("countdown").style.opacity = "0";
                 }, 5000);
+                setTimeout(() => {
+                    document.getElementById("main-title").innerHTML = "Happie Birthday Bhaiya! 🎉";
+                }, 6000);
                 clearInterval(countdownInterval);
             } else {
                 const days = Math.floor(diff / (1000 * 60 * 60 * 24));
